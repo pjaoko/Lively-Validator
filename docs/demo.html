@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lively Validator</title>
+	<meta name="description" content="Lively Validator Docs" />	
+    <meta name="author" content="Patrick Jaoko">
+	<link rel="stylesheet" href="css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="css/layout.css" type="text/css" />
+	<link rel="stylesheet" href="css/typography.css" type="text/css" />
+	<link rel="stylesheet" href="css/form.css" type="text/css" />
+	<link rel="stylesheet" href="css/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="../dist/lively-validator.css" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-12 lg-5"><img id="logo" title="Lively Validator" alt="Lively Validator" src="images/logo.png" /></h1>
+            </div>
+            <div class="row">
+                <nav class="col-12 lg-5">
+                    <a href="index.html">DOCS</a>
+                    <a href="demo.html"  class="active">DEMO</a>
+                    <a href="../tests/tests.html">TESTS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">            
+            <div class="row">            
+                <div class="col-12 col-lg-5"> 
+                    <section>
+                        <h2>Registration Form Example</h2>
+                        <p>Use this form to demo some of Lively Validators functionality. Try any one of the following:</p>
+                        <ol>
+                            <li>Clicking on the forms submit button.</li>	
+                            <li>Hovering over various form fields to view various Guide tooltips.</li>
+                            <li>Inserting valid data into different form fields.</li>
+                            <li>Inserting invalid data into different form fields.</li>
+                        </ol>
+                    </section>
+                </div>
+                
+                <div class="col-12 col-lg-7">
+	
+                    <article id='preview1'>
+                        <form id="previewForm" method="post" autofill="false" >
+                           <fieldset>
+                              <legend>Demo</legend>
+                              <p class='guide'>Please fill up and send this form to join us today!</p>
+                              <p><b>Name</b> <input title="Name" type="text" name="name" data-validate="required; alphabetic" /><i /></p>
+                              <p><b>Email</b> <input title="Email" type="text" name="email" data-validate="email; required" /></p>
+                              <p><b>Phone</b> <input type="text" name="phone" data-validate="tel" /></p>
+                              <p><b>Password</b> <input type="password" name="pass" id="pass" data-validate="required; minChars::8; maxChars::12;" /></p>
+                              <p><b>Confirm Password</b> <input type="password" name="confirmPass" data-validate="required; confirm::pass" /></p>
+                              <hr />
+                              <p><b>Profile Picture:</b> <input type="file" name="picture" data-validate="image; min::3; max::200;" /></p>
+                              <p><b>Birthday:</b><input type="date" name="birthday" data-validate="date; minDate::1910-01-01"  /></p>
+                              <p><b>Profile:</b> <textarea name="message" data-validate="minChars::15; maxChars::50" ></textarea></p>
+                              <hr />
+                              <p><b>Subscription:</b>
+                                 <select name="subscription" id="subscription" data-validate="requiredSet" >
+                                    <option value="">Select One</option>
+                                    <option value="1">1 Month - $50.00</option>
+                                    <option value="3">3 Months - $60.00</option>
+                                    <option value="6">6 Mothns - $100.00</option>
+                                 </select>
+                              </p>
+                              <p><b>Credit Card Type:</b>
+                                 <input type="radio" name="ccType" value="mastercard" data-validate="requiredSet" /> Mastercard
+                                 <input type="radio" name="ccType" value="visa"   /> Visa
+                                 <input type="radio" name="ccType" value="jcb"   /> JCB
+                              
+                              </p>
+                              <p><b>Credit Card Number:</b><input type="text" name="ccNumber" data-validate="creditCard; required" /></p>
+                              
+                              <hr />
+                              <p><b>Terms & Conditions:</b> 
+                                 <input type="checkbox" value="accept" name="tc" data-validate="required" data-guide="You must agree to our Terms of Service to register." data-alert="You must agree to our Terms of Service to register." />
+                              </p>
+                              <p><input type="submit" name="send" value="Send" /></p>
+                           </fieldset>
+                        </form>
+                    </article>
+	
+                </div>
+            </div>
+            
+        </div>
+    </main>   
+    <script type="text/javascript" src="js/codemirror-compressed.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.0_min.js"></script>
+	<script type="text/javascript" src="../dist/livelyValidator.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</div>
+</body>
+</html>

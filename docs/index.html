@@ -1,0 +1,1840 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lively Validator</title>
+	<meta name="description" content="Lively Validator Docs" />	
+    <meta name="author" content="Patrick Jaoko">
+	<link rel="stylesheet" href="css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="css/layout.css" type="text/css" />
+	<link rel="stylesheet" href="css/typography.css" type="text/css" />
+	<link rel="stylesheet" href="css/form.css" type="text/css" />
+	<link rel="stylesheet" href="css/tabs.css" type="text/css" />
+	<link rel="stylesheet" href="css/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="../dist/lively-validator.css" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-12 lg-5"><img id="logo" title="Lively Validator" alt="Lively Validator" src="images/logo.png" /></h1>
+            </div>
+            <div class="row">
+                <nav class="col-12 lg-5">
+                    <a href="index.html" class="active">DOCS</a>
+                    <a href="demo.html">DEMO</a>
+                    <a href="../tests/tests.html">TESTS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">            
+            <div class="row">            
+                <div class="col-lg-3 sm-hide lg-show">                
+                    <nav>        
+                        <ul>
+                            <li><a href="#page1">Intro</a></li>
+                            <li><a href="#page2-1">Quick Start</a></li>
+                            <li><a href="#page2-2">Setup & Configuration</a></li>
+                            <li><ul>
+                                <li><a href="#page2-2-1">HTML Configuration</a></li>
+                                <li><ul>
+                                    <li><a href="#page2-2-1-1">Setting Validation Rules</a></li>
+                                    <li><a href="#page2-2-1-2">Customizing Guides</a></li>
+                                    <li><a href="#page2-2-1-3">Customizing Alerts</a></li>
+                                </ul></li>
+                                <li><a href="#page2-2-2">JavaScript Setup Options</a></li>
+                                <li><ul>
+                                    <li><a href="#page2-2-2-1">showGuides</a></li>
+                                    <li><a href="#page2-2-2-2">guides</a></li>
+                                    <li><a href="#page2-2-2-3">alerts</a></li>
+                                    <li><a href="#page2-2-2-4">onsubmitAlert</a></li>
+                                    <li><a href="#page2-2-2-5">rules</a></li>
+                                    <li><a href="#page2-2-2-6">onValidate</a></li>
+                                    <li><a href="#page2-2-2-7">debug</a></li>
+                                </ul></li>
+                            </ul></li>
+                            <li><a href="#page2-3">Validation Rules</a></li>
+                            <li><a href="#page2-4">CSS Styling</a></li>
+                            <li><a href="#page2-5">PHP Validation Script</a></li>
+                            <li><a href="#page3">Code Examples</a></li>
+                            <li><ul>
+                                <li><a href="#page3-1">Example 1</a></li>
+                                <li><a href="#page3-2">Example 2</a></li>
+                                <li><a href="#page3-3">Example 3</a></li>
+                            </ul></li>
+                        </ul>
+                        &nbsp;
+                    </nav>
+                </div>            
+                <div class="col-sm-12 col-lg-9">
+                    
+                    <article id='page1' class="level-1">
+                        <section>
+                            <figure><img alt="lively validator screenshot" src="images/screen.gif" /></figure>
+                            
+                            <p>- Over 30 validation rules for different types of data including numbers, files, dates and 
+                            strings. You can easily extend the plugin with their own custom rules.</p>
+
+                            <p>- Both client-side (the jQuery plugin) and server-side (a PHP class) validation supported.</p>
+
+                            <p>- Stylish tooltips for instant feedback. The look is fully customizable using CSS.</p> 
+
+                            <p>- HTML5 aware - recognizes and supports all the new HTML5 form input types and attributes.</p>
+
+                            <p>- Two types of feedback messages: Guides for helpful instructions before filling, and Alerts 
+                            for errors messages. Each validation rule has its own Guide and Alert message, which
+                            you can change and customize for all fields at once, or just one form field.</p>
+
+                            <p>- Allows multiple validation rules to be specified on the same element.</p>
+                        </section>       
+                        
+                        <section class="container table">
+                            <div class="row">
+                                <h2>VALIDATION TYPES</h2>
+                                <h4>GENERIC</h4>
+                                required, confirm, min, max         
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>STRINGS</h4>
+                                    <ul>
+                                        <li>alphabetic</li>
+                                        <li>alphanumeric</li>
+                                        <li>color</li>
+                                        <li>creditcard number</li>
+                                        <li>email address</li>
+                                        <li>maximum length</li>
+                                        <li>minimum length</li>
+                                        <li>numeric text</li>
+                                        <li>telephone numbers</li>
+                                        <li>URLs</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>DATES</h4>
+                                    <ul>
+                                        <li>date</li>
+                                        <li>datetime</li>
+                                        <li>datetimeLocal</li>
+                                        <li>maximum</li>
+                                        <li>minimum</li>
+                                        <li>month</li>
+                                        <li>time</li>
+                                        <li>week</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>FILES</h4>
+                                    <ul>
+                                        <li>document</li>
+                                        <li>extension</li>
+                                        <li>mime subtype</li>
+                                        <li>mime type</li>
+                                        <li>image</li>
+                                        <li>maximum size</li>
+                                        <li>minimum size</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>NUMBERS</h4>
+                                    <ul>
+                                        <li>age</li>
+                                        <li>maximum</li>
+                                        <li>minimum</li>
+                                        <li>valid number</li>
+                                    </ul>                                
+                                </div>
+                            </div>
+                        </section>
+
+                    </article>
+                    
+                    <article id='page2-1' class="level-2">
+                        <h1>Quick Start</h1>
+                        
+                        <section>
+                            <h2>Step 1 - Create the form</h2>
+                            <p>Start by creating the form. There are no restrictions on the markup or styling of the form, so feel free to use any format or styling that suits you.
+                            Give the form a unique id, to make it easier to select using jQuery for the plugin's initialization (step 5).</p>
+                        </section>
+                        
+                        <section>
+                            <h2>Step 2 - Set validation rules</h2>
+
+                            <p>Consider all the data being collected, and any rules or restrictions on what can be entered into each form field. The <a href="#page2-3">Validation Rules</a> section gives a detailed list of all 
+                            the validation rules available. Then use the <code>data-validate</code> attribute to set rules for each field. You could also customize the Guide and Alert messages for each field 
+                            (see <a href="#page2-2-1">HTML Configuration</a>) or change the Alert and Guide messages produced by any validation rule (see <a href="#page2-2-2">JavaScript Setup Options</a>).</p>
+                        </section>
+
+                        <section>		
+                            <h2>Step 3 - Add a link to Lively Validator's CSS file</h2>
+
+                            <p>You will find this CSS file in "Lively-Validator/lively-validator.css", and its to style the Guide and Alert tooltips, and validated form fields. Link to it in your form's 
+                            HTML document as shown below.</p>
+
+                            <pre data-lang='htmlmixed' data-tab='html'>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                               &lt;title&gt;Lively Validator Example&lt;/title&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;css.css&quot; /&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;Lively-Validator/lively-validator.css&quot; /&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                            &lt;form method=&quot;post&quot; name=&quot;example&quot; id=&quot;example&quot;&gt; 
+                            ..
+                            </pre>
+                        </section>
+
+                        <section>
+                            <h2>Step 4 - Add a link to jQuery</h2>
+
+                            <p>Next, add a link to the jQuery JavaScript file. In the example below, it is placed within the <code>&lt;head&gt;</code> section of the HTML document.</p>
+
+                            <pre data-lang='htmlmixed' data-tab='html'>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                               &lt;title&gt;Lively Validator Example&lt;/title&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;css.css&quot; /&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;Lively-Validator/lively-validator.css&quot; /&gt;
+                               &lt; script type=&quot;text/javascript&quot; src=&quot;Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                            &lt;form method=&quot;post&quot; name=&quot;example&quot; id=&quot;example&quot;&gt; 
+                            ..
+                            </pre>
+                        </section>
+                        
+                        <section>
+                            <h2>Step 5 - Add a link to Lively Validator</h2>
+
+                            <p>Below the link to jQuery, add a link to Lively Validator. Both this and the previous two links above assume that the JavaScript and CSS files are in a folder named 
+                            "Lively-Validator", and that both this folder and the HTML document share the same parent folder. If you are using a different file structure, make sure you change 
+                            all the links to reflect that.</p>
+
+                            <pre data-lang='htmlmixed' data-tab='html'>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                               &lt;title&gt;Lively Validator Example&lt;/title&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;css.css&quot; /&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;Lively-Validator/lively-validator.css&quot; /&gt;
+                               &lt;script type=&quot;text/javascript&quot; src=&quot;Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                               &lt;script type=&quot;text/javascript&quot; src=&quot;Lively-Validator/livelyValidator.js&quot;&gt;&lt;/script&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                            &lt;form method=&quot;post&quot; name=&quot;example&quot; id=&quot;example&quot;&gt; 
+                            ..
+                            </pre>			
+                        </section>
+                        
+                        <section>
+                            <h2>Step 6 - Initialize the plugin</h2>
+
+                            <p>Add the JavaScript code below, just after the link to Lively Validator. Here, the code is embedded within the HTML document, though it could also be placed in an external 
+                            JavaScript file. It initializes the plugin once the whole page has loaded by adding an event-handler function to jQuery's 
+                            <code data-lang="javascript">document.ready()</code> event. The event-handler function is itself a simple one-liner that selects the target form by id, then calls the 
+                            plugin's <code data-lang="javascript">livelyValidator()</code> function.</p> 
+
+                            <pre data-lang='htmlmixed' data-tab='html'>
+                            &lt;html&gt;
+                            &lt;head&gt;
+                               &lt;title&gt;Lively Validator Example&lt;/title&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;css.css&quot; /&gt;
+                               &lt;link rel=&quot;cssheet&quot; href=&quot;Lively-Validator/lively-validator.css&quot; /&gt;
+                               &lt;script type=&quot;text/javascript&quot; src=&quot;Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                               &lt;script type=&quot;text/javascript&quot; src=&quot;Lively-Validator/livelyValidator.js&quot;&gt;&lt;/script&gt;
+                               &lt;script type=&quot;text/javascript&quot; &gt;
+                                  $(document).ready( function(){ $('#example').livelyValidator(); });
+                               &lt;/script&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                            &lt;form method=&quot;post&quot; name=&quot;example&quot; id=&quot;example&quot;&gt; 
+                            ..
+                            </pre>
+
+                            <p>In the example above, the <code>livelyValidator()</code> function is called without any parameters though it does accept an optional object. The object is used to customize the plugin's
+                            validation Guides and Alert messages, extend it with your own validation rules or alter its default behavior on form submission. See the <a href="#page2-2-2">JavaScript</a> 
+                            section under "Setup & Configuration Options" for more info on this. </p>
+                            
+                        </section>
+                        
+                        <section>
+                            <h2>Step 7 - Implement server-side validation (optional)</h2>
+
+                            <p>Lively Validator comes with a server-side PHP validation class, built to work together with its client-side jQuery plugin. This last step is optional but highly recommended, 
+                            just in-case a sneaky user turns off JavaScript in their browsers so as to bypass the client-side validation. The PHP class adds an extra layer of security on the server. How 
+                            you implement the server-side validation will depend mainly on the purpose of the form and its processing logic, but a well documented, practical example on how to do this 
+                            is provided in the <a href="#page3">Examples</a> section. You can also read more about the Lively Validator PHP class <a href="#page2-5">here</a>.</p>
+                            
+                        </section>
+                                
+                    </article>
+                    
+                    <article id='page2-2' class="level-2">
+                        <h1>Setup & Configuration Options</h1>
+
+                        <p>This section covers how to get Lively validator up and running by specifying validations rules and customizing its behavior. All the validation rules and feedback messages 
+                        are set in <a href="#page2-2-1">HTML</a>, while the plugin's initialization and customization is a <a href="#page2-2-2">JavaScript</a> affair.</p>
+                        
+                    </article>
+                    
+                    <article id='page2-2-1' class="level-3">
+                        <h1>HTML Configuration</h1>
+                        
+                        <p>Lively Validator works with all types of interactive form controls: buttons, checkboxes, radio buttons, file select, text input and drop-down menus. It checks the validity of
+                        a form control's value just after a user edits it, and before the form is submitted. It also provides helpful Guides (instructions) before a field is edited, and Alerts (error messages) 
+                        whenever invalid data is inserted in a field. All the rules, guides and alerts are configured as attributes of the targeted form control, namely: <code>data-validate</code>,
+                        <code>data-alert</code> and <code>data-guide</code>. The plugin also recognizes new HTML5 input types and attributes, and these could also be used to set validation rules.</p>
+                        
+                        <ul>
+                            <li><a href="#page2-2-1-1">Setting Validation Rules</a></li>
+                            <li><a href="#page2-2-1-2">Customizing Guides</a></li>
+                            <li><a href="#page2-2-1-3">Customizing Alerts</a></li>
+                        </ul>
+                        
+                    </article>
+                    
+                    <article id='page2-2-1-1' class="level-4">
+                        <h1>Setting Validation Rules</h1>
+
+                        <p>There are 4 different ways of setting validation rules:</p>
+
+                        <h3>1. Using the <code>data-validate</code> attribute</h3>
+
+                        <p>This is the default method, which takes precedence over the other 3. The main advantage of using this rule is that you can declare many validation rules at once.</p>
+
+                        <pre data-lang="htmlmixed">
+                        Days in a Month: 
+                        &lt;input name=&quot;days&quot; data-validate=&quot;required; number; minNumber::28; maxNumber::31&quot; /&gt;
+                        </pre>
+
+                        <p>In the example above, 4 separate validation rules have been set for the input field: required, number, minNumber and maxNumber. Each of the rules must be separated by
+                        a <b>';'</b> character. Some rules like <code>minNumber</code> and <code>maxNumber</code> will require an additional parameter to perform the check, which is specified by 
+                        adding <b>"::"</b> after the rule's name. So to restrict input to a number greater than 50, we'll use <code data-lang="htmlmixed">data-validate="minNumber::50"</code>. 
+                        The only restriction to setting many rules on the same form field is that all the rules must validate the same basic data type. For example, you cannot require a field's
+                         value to be both an image file and a number.</p> 
+
+                        <p>All the validation rules provided by the plugin are grouped into six categories: all, set, string, number, date and file. The only rule in the <b>"all"</b> category is <b>required</b>, 
+                        and this is the only validation rule that can be mixed with rules from other categories. If you happen to accidentally mix rules from different categories, the plugin will 
+                        only check the rules from the first category specified, and ignore all the rest. If <code>debug</code> is set to true, this will also throw an Exception after calling JavaScript's <code>alert()</code> 
+                        method with more details on the error. For more information about the categories and all the available validation rules, please see the <a href="#page2-3">Validation Rules</a> section.</p>
+
+                        <form class="example" method="post">
+                        <fieldset>
+                        <legend>Using: data-validate</legend>
+                        <p>Days in a Month: <input type="text" name="days" data-validate="required; number; minNumber::28; maxNumber::31" /></p>
+                        <p><input type="submit" name="send" value="Send" /></p>
+                        </fieldset>
+                        </form>
+                        
+                        <h3>2. Using the <code>required</code> attribute</h3>
+
+                        <p>Setting this new HTML5 attribute will automatically stop any form being submitted if its the target field is empty. All modern browsers support this behavior, but 
+                        differ on error message content and styling. Using Lively Validator, your forms behave and look uniformly across all browsers, including older ones that do not 
+                        support HTML5. The plugin does this by turning off the browser's default behavior by setting the forms <code>novalidate</code> attribute in modern browsers, 
+                        then taking over the validation process.</p>
+
+                        <p>To set a field as required, simply add the "required" attribute as shown below.</p>
+
+                        <pre data-lang="htmlmixed">
+                        Days in a Month: 
+                        &lt;input name=&quot;days&quot; required=&quot;required&quot; /&gt;
+                        </pre>
+
+                        <form class="example" method="post">
+                        <fieldset>
+                        <legend>Using: required</legend>
+                        <p>Days in a Month: <input type="text" name="days" required="required" /></p>
+                        <p><input type="submit" name="send" value="Send" /></p>
+                        </fieldset>
+                        </form>
+                        
+                        <h3>3. Using new HTML5 input types</h3>
+
+                        <p>If you use any of the new HTML5 input types, the plugin automatically validates the field's value whenever a user changes it. Lively Validator supports the following new
+                        input types: <code>email</code>, <code>tel</code>, <code>url</code>, <code>date</code>, <code>datetime</code>, <code>datetime-local</code>, <code>month</code>, <code>week</code>, 
+                        <code>time</code>, <code>range</code> and <code>number</code>.</p>
+
+                        <p>You can also use the <code>min</code> and <code>max</code> attributes together with the new input types, and Lively validator will also check these constraints for you. The 
+                        <code>min</code> and <code>max</code> attributes can be used together with the following: date, datetime, datetime-local, month, week, time range and number.</p> 
+
+                        <p>The example below shows how to set validation rules using the new HTML5 input attributes. Its worth noting that the rules specified here have the same effect as those declared
+                        using the custom <code>data-validate</code> attribute in 1 above.</p>
+
+                        <pre data-lang="htmlmixed">
+                        Days in a Month: 
+                        &lt;input name=&quot;days&quot; type=&quot;number&quot; required=&quot;required&quot; min=&quot;28&quot; max=&quot;31&quot; /&gt;
+                        </pre>
+
+                        <form class="example" method="post">
+                        <fieldset>
+                        <legend>Using: HTML5 Input Types</legend>
+                        <p>Days in a Month: <input type="number" name="days" required="required" min="28" max="31" /></p>
+                        <p><input type="submit" name="send" value="Send" /></p>
+                        </fieldset>
+                        </form>
+                        
+                        <h3>4. Using The <code>pattern</code> Attribute</h3>
+
+                        <p>The new <code>pattern</code> attribute lets you specify a regular expression which the browser uses to validate input data. The HTML5 specification states that the 
+                        <code>pattern</code> attribute should only be used with the following form input types: text, search, url, tel, email and password.</p>
+
+                        <p>By using the pattern attribute with any of the allowed input types, Lively Validator will copy the regular expression specified as the patterns value, and then
+                        use it to generate a new validation rule for that input field. Using the same "Days in a month" example, the HTML for this will be:</p>
+
+                        <pre data-lang="htmlmixed">
+                        Days in a Month: 
+                        &lt;input name=&quot;days&quot; type=&quot;text&quot; pattern=&quot;28|29|30|31&quot; required="required" /&gt;
+                        </pre>
+
+                        <form class="example" method="post">
+                        <fieldset><legend>Using: pattern</legend>
+                        <p>Days in a Month: <input type="text" name="days" pattern="28|29|30|31"  required="required" /></p>
+                        <p><input type="submit" name="send" value="Send" /></p>
+                        </fieldset>
+                        </form>
+                        
+                    </article>
+                    
+                    <article id='page2-2-1-2' class="level-4">
+                        <h1>Customizing Guides</h1>
+                        
+                        <figure><img alt='' src='images/guide-intro.jpg' /></figure>
+
+                        <p>Lively Validator has over thirty validation rules, and each has its own Guide. Guides give the user some helpful tips or instructions before they fill a form field.
+                        You can use the default Guide, or set your own for each field using the <code>data-guide</code> attribute as shown in the example below.</p>
+
+                        <pre data-lang="htmlmixed">
+                        Phone: &lt;input name=&quot;phone&quot; 
+                        data-validate=&quot;tel; required&quot; 
+                        data-guide=&quot;Please provide a valid telephone number, including the country and area code.&quot; 
+                        /&gt;
+                        </pre>
+
+                        <p>You can disable Guide's on a form field by setting the data-guide attribute a blank string <br />(<code>data-guide=""</code>). To turn off Guides for all form fields,
+                        see the <code>showGuides</code> configuration option in the <a href="#page2-2-2">JavaScript</a> section.</p>
+
+                        <h2>Examples</h2>
+
+                        <p>Hover over each of the two fields below to see the results of using the <code>data-guide</code> attribute.</p>
+
+                        <form class="example" method="post">
+                        <fieldset><legend>Guide Customization Examples (HTML)</legend>
+
+                        <p>Phone: <input type="text" name="phone" data-validate="tel; required" /> <br />
+                        <i>Using the default Guide</i> 
+                        </p>
+                        <p>Phone 2: <input type="text" name="phone2" data-validate="tel; required" data-guide="Please provide a valid telephone number, including your country and area code." /> <br />
+                        <i>Using a customized Guide</i>
+                        </p>
+                        <p>Phone 3: <input type="text" name="phone3" data-validate="tel; required" data-guide="" /><br />
+                        <i>No Guide (data-guide="")</i>
+                        </p>
+                        <p><input type="submit" name="send" value="Send" /></p>
+                        </fieldset>
+                        </form>		
+                    </article>
+
+                    <article id='page2-2-1-3' class="level-4">
+                        <h1>Customizing Alerts</h1>
+
+                        <figure><img alt='' src='images/alert-intro.jpg' /></figure>
+
+                        <p>Alert tooltips are displayed whenever the user hovers over a field containing invalid data, and each validation rule has it's own unique Alert message. Unlike Guides, 
+                        these messages are not optional and must always display whenever a validation error occurs.  You can set your own custom Alert messages on a form field using the 
+                        <code>data-alert</code> attribute as shown below.</p>
+
+                        <pre data-lang="htmlmixed">
+                        Email: &lt;input name=&quot;email&quot;  
+                          data-validate=&quot;email&quot; 
+                          data-alert=&quot;A valid email address is required for example.com registration.&quot; 
+                        /&gt;
+                        </pre>
+
+                        <h2>Examples</h2>
+
+                        <p>Click on the send button, then hover over each of the two fields below to see the results of using the <code>data-alert</code> attribute.</p>
+
+                        <form class="example" method="post">
+                            <fieldset><legend>Alert Customization Example (HTML)</legend>
+                            <p>Email 1: <input type="text" name="email" data-validate="email; required" /> <br />
+                            <i>Using the default Alert </i>
+                            </p>
+                            <p>Email 2: <input type="text" name="email2"  data-validate="email; required" data-alert="All your emails are belong to us!!!" /> <br />
+                            <i>Using a customized Alert</i>
+                            </p>
+                            <p><input type="submit" name="send" value="Send" /></p>
+                            </fieldset>
+                        </form>
+                    </article>
+                    
+                    <article id='page2-2-2' class="level-3">
+                        <h1>JavaScript Setup Options</h1>
+                        
+                        <p>Lively Validator has just one public function: <code>livelyValidator()</code>. It is used to both initialize and customize an instance of the plugin. The customization is done
+                        using the optional object parameter passed to the <code>livelyValidator()</code> function. This object can have any one of the properties below. All these properties are optional, 
+                        as the plugin falls back to use the default values if none are set. This sections looks at each of the properties in turn.</p>
+
+                        <ul>
+                            <li><a href="#page2-2-2-1">showGuides</a></li>
+                            <li><a href="#page2-2-2-2">guides</a></li>
+                            <li><a href="#page2-2-2-3">alerts</a></li>
+                            <li><a href="#page2-2-2-4">onsubmitAlert</a></li>
+                            <li><a href="#page2-2-2-5">rules</a></li>
+                            <li><a href="#page2-2-2-6">onValidate</a></li>
+                            <li><a href="#page2-2-2-7">debug</a></li>
+                        </ul>
+                    </article>
+                    
+                    <article id='page2-2-2-1' class="level-4">
+                        <h1>showGuides</h1>
+
+                        <p>This option lets you set whether to show the Guide tooltips when a user hovers over an empty form field.</p>
+                        <p class='specs'><strong>Default Value:</strong> true</p>
+                        <p class='specs'><strong>Allowed Values:</strong> true or false</p> 
+
+                        <h3>Examples</h3>
+
+                        <p>Hover over the input fields in the two forms below to see the effect of setting <code>showGuides</code></p>
+
+                        <form id="example-showGuidesTRUE" method="post">
+                            <fieldset>
+                                <legend>showGuides: true</legend>
+                                <p>Days in a Month: <input name="days" data-validate="required; number; minNumber::28; maxNumber::31" type="text" /> </p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   $('#example').livelyValidator(); 
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+
+                        <form id="example-showGuidesFALSE" method="post">
+                            <fieldset>
+                                <legend>showGuides: false</legend>
+                                <p>Days in a Month: <input name="days" data-validate="required; number; minNumber::28; maxNumber::31" type="text" /> </p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){  
+                                   $('#example').livelyValidator({ showGuides: false });   
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+                    </article>
+                    
+                    <article id='page2-2-2-2' class="level-4">
+                        <h1>guides</h1>
+
+                        <figure><img alt='' src='images/guide-example.jpg' /></figure>
+                        <p>This configuration option changes a validation rule's Guide. All fields that use this rule will then show your new message instead of the default one when
+                        the Guide tooltip appears. However, this only applies when <code>showGuides</code> is not set to <code>false</code>, and a <code>data-guide</code> attribute has not been set 
+                        on the current form field.</p>
+                        <p class='specs'><strong>Default Value:</strong> null</p>
+                        <p class='specs'><strong>Allowed Values:</strong> A JavaScript object of key-value pairs, where each key must match one of Lively Validator's <a href="#page2-3">Validation Rules</a>. The value is the new message.</p>
+
+                        <h2>Examples</h2>
+                        <p>Hover over the input fields in the two forms below to see the effect of setting <code>guides</code>.</p>
+                        <form id="example-customGuides" method="post" >
+                            <fieldset>
+                                <legend>Using custom Guides for validation rules.</legend>
+                                <p><b>Username:</b> <input name="name" data-validate="required; alphanumeric" type="text" /> </p>
+                                <p><b>Password:</b> <input name="pass" data-validate="required; minChars::8; maxChars::12;" type="password" /></p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   var customGuides = {
+                                      required: "REQUIRED FIELD!",
+                                      alphanumeric: "WORDS AND NUMBERS ONLY!",
+                                      minChars: "MINIMUM 5 CHARACTERS!",
+                                      maxChars: "MAXIMUM 15 CHARACTERS!"
+                                     };
+                                   $('#example').livelyValidator({ guides: customGuides });
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+
+                        <form id="example-noCustomGuides" method="post" >
+                            <fieldset>
+                                <legend>Using default Guides for validation rules.</legend>
+                                <p><b>Username:</b> <input name="name" data-validate="required; alphanumeric" type="text" /> </p>
+                                <p><b>Password:</b> <input name="pass" data-validate="required; minChars::8; maxChars::12;" type="password" /></p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   $('#example').livelyValidator();   
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+                    </article>
+                    
+                    <article id='page2-2-2-3' class="level-4">
+                        <h1>alerts</h1>
+
+                        <figure><img alt='' src='images/alert-example.jpg' /></figure>
+                        <p>Alert tooltips appear when a form field contains invalid data and the mouse pointer hovers over it. There are over 30 data validation 
+                        rules in Lively Validator, and each rule has its own unique Alert message. You change a rule's Alert message during plugin initialization by passing an object with an
+                        <code>alert</code> property to the <code>livelyValidator()</code> function. The value of <code>alert</code> must be an object of key-value pairs, with the key being the name 
+                        of the validation rule you want to customize, and the value being the new Alert message.</p>
+
+                        <p class='specs'><strong>Default Value:</strong> null</p>
+                        <p class='specs'><strong>Allowed Values:</strong> A JavaScript object of key-value pairs, where each key must match one of Lively Validator's <a href="#page2-3">Validation Rules</a>. The value contains the new alert message.</p>
+
+                        <h2>Examples</h2>                         
+                        <p>Click the submit button on each form, then mouse-over the input fields to see the effect of setting <code>alerts</code></p>
+                        <form id="example-customAlerts" method="post" >
+                            <fieldset>
+                                <legend>Using custom Alerts for validation rules.</legend>
+                                <p><b>Username:</b> <input name="name" data-validate="required; alphanumeric" type="text" /> </p>
+                                <p><b>Password:</b> <input name="pass" data-validate="required; minChars::8; maxChars::12;" type="password" /> </p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   var customAlerts = {
+                                      required: "REQUIRED FIELD!",
+                                      alphanumeric: "WORDS AND NUMBERS ONLY!",
+                                      minChars: "MINIMUM 5 CHARACTERS!",
+                                      maxChars: "MAXIMUM 15 CHARACTERS!"
+                                   };
+                                   $('#example').livelyValidator({ alerts: customAlerts });
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+
+                        <form id="example-noCustomAlerts" method="post" >
+                            <fieldset>
+                                <legend>Using default Alerts for validation rules.</legend>
+                                <p><b>Username:</b> <input name="name" data-validate="required; alphanumeric" type="text" /> </p>
+                                <p><b>Password:</b> <input name="pass" data-validate="required; minChars::8; maxChars::12;" type="password" /> </p>
+                                <p><input type="submit" name="send" value="Send" /></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   $('#example').livelyValidator();   
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+                    </article>
+                    
+                    <article id='page2-2-2-4' class="level-4">
+                        <h1>onsubmitAlert</h1>
+
+                        <p>Lively Validator always checks all the form fields containing validation rules whenever a user attempts to submit a form. If any invalid data is found, form submission is stopped, 
+                        and the submit button that was clicked on will briefly display a general error message (Alert). Use the <code>onsubmitAlert</code> configuration option to change the default message. To
+                        change the Alert for a specific submit button, use the <code>data-alert</code> attribute as outlined in the <a href="#page2-2-1">HTML Configuration</a> Configuration section.</p>
+
+                        <p class='specs'><strong>Default Value:</strong> 'Please make sure that all fields are correctly filled before sending this form.'</p>
+                        <p class='specs'><strong>Allowed Values:</strong> A JavaScript string.</p>
+
+                        <h2>Examples</h2>                         
+                        <p>Click the submit button on each form to see the effect of setting <code>onsubmitAlert</code>.</p>
+                        <form id="example-submitAlerts" method="post" >
+                            <fieldset>
+                                <legend>Using Custom error message on form submission</legend>
+                                <p><b>Message:</b> <textarea name="message" data-validate="minChars::15; maxChars::50; required" ></textarea></p>
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   var newMessage = "Wait!! There is no message...";   
+                                   $('#example').livelyValidator({ onsubmitAlert: newMessage });
+                                });
+                                </pre>
+                                <p><input type="submit" name="send" value="Submit" /></p>
+                            </fieldset>
+                        </form>
+
+                        <form id="example-nosubmitAlerts" method="post" >
+                            <fieldset>
+                                <legend>NOT using Custom error message on form submission</legend>                        
+                                <p><b>Message:</b> <textarea name="message" data-validate="minChars::15; maxChars::50; required" ></textarea></p>                        
+                                <p><input type="submit" name="send" value="Submit" /></p>		
+                                <pre data-lang="javascript">
+                                $(document).ready( function(){
+                                   $('#example').livelyValidator();
+                                });
+                                </pre>
+                            </fieldset>
+                        </form>
+                    </article>
+                    
+                    <article id='page2-2-2-5' class="level-4">
+                        <h1>rules</h1>
+
+                        <p>Validation rules are at the core of what this plugin is all about, and there are over 30 validation rules for different types of data including strings, numbers, dates
+                        and files. If you find that none of this rules test a unique data validation requirement, the plugin offers a simple way to extend it with your own rules using the <code>rules</code>
+                        configuration option. The <code>rules</code> configuration property must be a JavaScript object of key-value pairs, where each pair defines a new validation rule. The key is the new 
+                        rule's name, which must not clash with any of the plugin's <a href="#page2-3">in-built validation rules</a>. The value is a Javascript object containing the new rule's definition.</p>
+
+                        <p>A rules definition object contains the following properties:</p>
+                        <ul>
+                        <li><b>type</b>: The basic data-type the rule checks. this must be one of the following: all, string, number, set, date or file.</li>
+                        <li><b>guide</b>: A string containing the rule's Guide message. This one is optional.</li>
+                        <li><b>alert</b>: A string containing the rule's alert message.</li>
+                        <li><b>test</b>: This is the JavaScript function that performs the validation. It must always return a boolean value ( true or false ), and accepts two arguments. The first argument is
+                            for the data to validate, while the second is an optional parameter for functions that require it.</li>
+                        </ul>
+                            
+                        <h2>Example</h2>
+
+                        <p>In this example, we want to verify the user's age, and also make sure that they're over 18. The form presents two related fields, the first one asking for their age, and the
+                        second requesting the year of birth. Our custom validation rule will take both fields and check whether the year of birth given corresponds to the age value.</p>
+
+                        <form id="example-customRule" >
+                            <fieldset>
+                                <legend>Custom Rule Example</legend>
+                                <p>Age: <input name="age_field" data-validate="age" /></p>
+                                <p>Birth Year: <input name="year_field" data-validate="required; confirmAge::age_field;" /></p>
+                                <p><input type="submit" name="send" value="Submit" /></p>
+                            </fieldset>
+                        </form>
+
+                        <pre data-lang="htmlmixed">
+                        &lt;form id=&quot;example&quot; method=&quot;post&quot; &gt;
+                        &lt;fieldset&gt;
+                           &lt;legend&gt;Custom Rule Example&lt;/legend&gt;
+                           &lt;p&gt;Age: &lt;input name=&quot;age_field&quot; data-validate=&quot;age&quot; /&gt;&lt;/p&gt;
+                           &lt;p&gt;Birth Year: &lt;input name=&quot;year_field&quot; data-validate=&quot;required; confirmAge::age_field;&quot; /&gt;&lt;/p&gt;
+                        &lt;p&gt;&lt;input type=&quot;submit&quot; name=&quot;send&quot; value=&quot;Submit&quot; /&gt;&lt;/p&gt;
+                        &lt;/fieldset&gt;
+                        &lt;/form&gt;
+                        </pre>
+
+                        <p>The HTML used to create the form is shown above. The important part here is the value of the <code>data-validate</code> attribute, which lists 3 validation rules: <code>required</code>,
+                         <code>number</code> and <code>confirmAge</code>. The custom rule here is confirmAge, which take one parameter - the name of another field in the same form. The 
+                         <code>confirmAge()</code> function below takes this value as its second parameter, which it uses to obtain the value entered in the "Age" field using jQuery. This value is 
+                         then compared to the value of the functions first parameter, which is the value entered in the "birth Year" field. The <code>confirmAge()</code> function is then added to Lively 
+                         Validator, when now has a new validation rule called "confirmAge".</p>
+
+                        <pre data-lang="javascript">
+                        var customRules, newRule;
+                        newRule = {};
+                           newRule.test = function ( input, targetField ){
+                           // input contains the value entered in the "Age" field
+                           var $targetField, currentYear, givenAge, calculatedAge, birthYear;
+                           // select the "Age" field with JQuery
+                           $targetField = $("input[name='" + targetField + "']");
+                           // get its value & convert it into a number
+                           givenAge = parseInt( $targetField.val(), 10 );
+                           birthYear = parseInt( input, 10 );
+                           currentYear = new Date().getFullYear();
+
+                           calculatedAge = currentYear - birthYear;
+                           if( givenAge === calculatedAge || calculatedAge - 1 === givenAge ){
+                             return true;
+                           }
+                           return false;
+                        }
+                        //use this data type whenever the validation spans more that one form field.
+                        newRule.type = 'set'; 
+                        newRule.guide = 'Which year were you born?';
+                        newRule.alert = 'Please enter the correct year of birth for your age.';
+
+                        customRules = { confirmAge: newRule };
+
+                        $(document).ready( function(){
+                        $('#example').livelyValidator({ debug:true, rules: customRules }); 
+                        });
+                        </pre>
+                    </article>
+                    
+                    <article id='page2-2-2-6' class="level-4">
+                        <h1>onValidate</h1>
+
+                        <p>By default, Lively Validator will stop a form containing validation errors from being submitted, while forms with no errors will be submitted as expected. To alter this
+                        behavior, use the <code>onValidate</code> configuration option. The value of this property must be a JavaScript function. When set, Lively Validator will always stop the form from
+                        being submitted, regardless of whether it contains valid data or not. It stops form submission, then passes the validation results (true or false) to the function specified
+                        by <code>onValidate</code>. This can be useful in situations where you want to run other functions on the form's submit event, or you want to submit the form using AJAX as shown in the
+                        example below.</p>
+
+                        <p class='specs'><strong>Default Value:</strong> null</p>
+                        <p class='specs'><strong>Allowed Values:</strong> A JavaScript function.</p>
+
+                        <pre data-lang="htmlmixed">
+                        &lt;form id=&quot;example&quot;&gt;
+                        &lt;fieldset&gt;&lt;legend&gt;onValidate Example&lt;/legend&gt;
+                        &lt;p&gt;Days in a Month: &lt;input name=&quot;days&quot; data-validate=&quot;required; number; minNumber::28; maxNumber::31&quot; /&gt; &lt;/p&gt;
+                        &lt;fieldset&gt;
+                        &lt;/form&gt;
+
+                        &lt;script type=&quot;text/javascript&quot; &gt;
+                        $(document).ready( function(){
+                            $('#example').livelyValidator( {onValidate:sendForm} );
+
+                            function sendForm( isValid ){
+                                if( isValid === TRUE ){
+                                    // submit the from using AJAX/jQuery
+                                    $('#example').submit(); 
+                                }
+                            }
+                        });
+                        &lt;/script&gt;
+                        </pre>
+                    </article>
+                    
+                    <article id='page2-2-2-7' class="level-4">
+                        <h1>debug</h1>
+
+                        <p>This is more of a development aid than a configuration option, and should be set to false in live sites. Its purpose is to alert you of any configuration errors found in either
+                        your HTML attributes or JavaScript initialization. For example, setting a form field's validation rules to both a string and a number geneartes a HTML configuration error. If <code>debug</code> is set to false, all errors are ignored and the plugin attempts to continue running the script if possible. If <code>debug</code> is set to true, the
+                        plugin will display an error message using JavaScript's <code>alert()</code> function, then throw an Exception containing the same error message. By default, the <code>debug</code> is set to false if
+                        the HTML document is accessed from the server (by checking the value of location.protocol ), and true if the HTML document as a local file.</p>
+                    </article>
+                        
+                    <article id='page2-3' class="level-2">
+                        <h1>Validation Rules</h1>
+
+                        <p>Validation rules specify what type of data is allowed in a form field. Lively Validator currently has over 30 different validation rules, grouped into 6 categories: 
+                        all, string, number, set, date and file. A form field can only use rules within the same category, as mixing rules from different categories may not only be illogical, but also
+                        end up in a situation where the form cannot be submitted because validation always fails. The only exception is the "all" category, whose rules can be mixed with those 
+                        in any other category. All available are listed below, grouped by category.</p>
+
+                        <h2>Global</h2>
+
+                        <p>A general category, for rules that can fit into any of the other categories.</p>
+
+                        <p><b>required</b>
+                        The field cannot remain empty when the form is submitted.</p>
+                        
+                        <p><b>min</b>
+                        The minimum allowed quantity. May map to either minChars, minNumber, minFileSize or minDate depending on the form inputs type.</p>
+                        
+                        <p><b>max</b>
+                        The minimum allowed quantity. May map to either maxChars, maxNumber, maxFileSize or maxDate depending on the form inputs type.</p>
+
+                        <h2>SET</h2>
+
+                        <p>For rules that require checking the values of more than one form field e.g. checkboxes and radio inputs.</p>
+
+                        <p><b>confirm</b>
+                        The field's value must match the value of the other field specified by the parameter. Both fields must belong to the same form.
+                        <span class='specs'>Parameter: The HTML id of the other form field whose value is to be matched against.</span></p>
+
+                        <p><b>requiredSet</b>
+                        For input fields that are either radio buttons or checkboxes. At-least one of the fields in a group must be checked.</p>
+
+                        <h2>STRING</h2>
+
+                        <p>For any data that represents strings and/or will be stored in a database as a string value e.g usernames & cities.</p>
+
+                        <p><b>alphabetic</b>
+                        All characters must either be lowercase or uppercase alphabetic letters (a-z and A-Z).</p>
+
+                        <p><b>alphanumeric</b>
+                        The field can only contain alphabetic characters or digits (a-z, A-Z and 0-9).</p>
+
+                        <p><b>color</b>
+                        The field can only have valid HTML hexadecimal color value e.g. #ff0000.</p>
+
+                        <p><b>creditCard</b>
+                        The field requires a valid credit card number, in terms of length and characters. It must contain between 13 - 16 digits only. It does not test whether the credit card has
+                        expired, has enough credit or has been canceled.</p>
+
+                        <p><b>email</b>
+                        The field requires a valid email address, e.g. john.doe@example.com</p> 
+
+                        <p><b>maxChars</b>
+                        The field's input character count must be equal to, or less than the size specified by the parameter.
+                        <span class='specs'>Parameter: A number e.g 3, 15, 20</span>
+                        <span class='specs'>Example: <code>maxChars::45</code></span></p>
+
+                        <p><b>minChars</b>
+                        The field's input character count must be equal to, or greater than the size specified by the parameter.
+                        <span class='specs'>Parameter: A number e.g 300, 2</span>
+                        <span class='specs'>Example: <code>minChars::10</code></span></p>
+
+                        <p><b>numeric</b>
+                        The field can only contain digits 0-9.</p>
+
+                        <p><b>tel</b>
+                        The field must be a valid telephone number, containing only digits, spaces and the characters + - () /</p>
+
+                        <p><b>url</b>
+                        The field must be a valid, absolute URL e.g. http://www.example.com</p>
+
+                        <h2>NUMBER</h2>
+
+                        <p>For any data that represents numbers or/and will be stored in a database a a number value e.g. money & items purchased.</p>
+
+                        <p><b>age</b>
+                        The field should only contain a number between 0 and 120.</p>
+
+                        <p><b>maxNumber</b>
+                        The field can only contain a number equal to or less than the one specified by the parameter.
+                        <span class='specs'>Parameter: Any number e.g. 3000</span>
+                        <span class='specs'>Example: <code>maxNumber::2500</code></span></p>
+
+                        <p><b>minNumber</b>
+                        The field can only contain a number equal to, or greater than the one specified by the parameter.
+                        <span class='specs'>Parameter: Any number e.g 750</span>
+                        <span class='specs'>Example: <code>minNumber::44</code></span></p>
+
+                        <p><b>number</b>
+                        The field can only contain a valid numeric value e.g 0, -20, 4.5</p>
+
+                        <h2>FILE</h2>
+
+                        <p>For all files, selected & uploaded using the HTML file input type.</p>
+
+                        <p><b>document</b>
+                        The selected file must be either a PDF or MS Word file.</p>
+
+                        <p><b>fileExtension</b>
+                        The selected file's extension must match any one of the values specified by the parameter.
+                        <span class='specs'>Parameter: A coma separated list of allowed file extensions e.g doc, docx, pdf</span>
+                        <span class='specs'>Example: <code>fileExtension::doc,pdf,docx</code></span></p>
+
+                        <p><b>fileMimeSubtype</b>
+                        The selected file's mime subtype must match any one of the subtypes specified by the parameter. When using this rule together with the plugin's optional
+                        PHP server-side validation class, please make sure that the server is correctly configured to recognize all the specified mime subtypes. This rule can
+                        only be checked on the client-side by HTML5 compatible browsers (uses the FileSystem API).
+                        <span class='specs'>Parameter: A coma separated list of allowed mime subtypes e.g jpeg</span>
+                        <span class='specs'>Example: <code>fileMimeSubtype::jpeg</code></span></p>
+                                        
+                        <p><b>fileMimeType</b>
+                        The selected file's mime type must match any one of the types specified by the parameter. When using this rule together with the plugin's optional
+                        PHP server-side validation class, please make sure that the server is correctly configured to recognize all the specified mime types. This rule can
+                        only be checked on the client-side by HTML5 compatible browsers (uses the FileSystem API).
+                        <span class='specs'>Parameter: A coma separated list of allowed mime types e.g image</span>
+                        <span class='specs'>Example: <code>fileMimeType::image,text</code></span></p>
+
+                        <p><b>image</b>
+                        The selected file must be an image e.g jpeg, png, gif</p>
+
+                        <p><b>maxFileSize</b>
+                        The selected file's size must equal or be less than the value specified by the parameter. This rule can only be checked on the client-side by HTML5 
+                        compatible browsers (uses the FileSystem API).
+                        <span class='specs'>Parameter: A number, representing the maximum allowed file size in kilobytes (kb) e.g. 120.</span>
+                        <span class='specs'>Example: <code>maxFileSize::90</code></span></p>
+
+                        <p><b>minFileSize</b>
+                        The selected file's size must equal or be greater than the value specified by the parameter. This rule can only be checked on the client-side by HTML5 
+                        compatible browsers (uses the FileSystem API).
+                        <span class='specs'>Parameter: A number, representing the maximum allowed file size in kilobytes (kb) e.g. 30.</span>
+                        <span class='specs'>Example: <code>minFileSize::15</code></span></p>
+
+                        <h2>DATE</h2>
+
+                        <p>For any data meant to represent a point in time e.g years and dates.</p>
+
+                        <p><b>date</b>
+                        The field can only contain a valid HTML5 date value e.g. 2013-01-19</p>
+
+                        <p><b>datetime</b>
+                        The field can only contain a valid HTML5 datetime value e.g. e.g. 1990-12-31T23:59:60Z</p>
+
+                        <p><b>datetimeLocal</b>
+                        The field can only contain a valid HTML5 datetime-local value e.g. 1996-12-19T16:39:57.</p>
+
+                        <p><b>maxDate</b>
+                        The field can only contain a valid HTML5 date, datetime, datetime-local, month, week or time value, less than or equal to the value specified by the parameter.
+                        <span class='specs'>Parameter: A valid HTML5 date, datetime, datetime-local, month, week or time string e.g. 2013-10.</span>
+                        <span class='specs'>Example: <code>maxDate::2013-12</code></span></p>
+
+                        <p><b>minDate</b>
+                        The field can only contain a valid HTML5 date, datetime, datetime-local, month, week or time value, greater than or equal to the value specified by the parameter.
+                        <span class='specs'>Parameter: A valid HTML5 date, datetime, datetime-local, month, week or time string e.g. 1996-12-19T16:39:57Z.</span>
+                        <span class='specs'>Example: <code>maxDate::1996-12-19T16:39:57Z</code></span></p>
+
+                        <p><b>month</b>
+                        The field should only contain a valid HTML5 month value e.g. 2012-12</p>
+
+                        <p><b>time</b>
+                        The field can only contain a valid HTML5 time value e.g. 17:39:57</p>
+                         
+                        <p><b>week</b>
+                        The field can only contain a valid HTML5 week value e.g. 2013-W03</p>
+
+                    </article>
+
+                    <article id='page2-4' class="level-2">
+                        <h1>CSS (Styling)</h1>
+
+                        <p>Lively Validator adds tooltips to form input elements and slightly changes the appearance of validated fields to indicate whether their data is valid or invalid. 
+                        All this is styled using the CSS file located in <b>Lively-Validator/lively-validator.css</b>. This is the file to edit if you want to change the default
+                        appearance of Lively-Validator's tooltips, or how it css valid and invalid fields. There are just four main CSS classes that you need to pay attention to in this file:</p>
+
+                        <p><b>lv-tooltip</b> - The class given to all tooltips created by Lively Validator.</p>
+
+                        <p><b>lv-alert</b> - For tooltips displaying Alert error messages</p>
+
+                        <p><b>lv-guide</b> - For tooltips displaying Guide instructions</p>
+
+                        <p><b>lv-valid</b> - For validated form fields containing valid data</p>
+
+                        <p><b>lv-invalid</b> - for validated form fields containing invalid data</p>
+                    </article>
+                    
+                    <article id='page2-5' class="level-2">
+                        <h1>PHP</h1>
+
+                        <p>The Lively Validator jQuery plugin has a PHP twin that performs almost all the same data validation routines in the server. This optional PHP script provides an extra 
+                        layer of security on the server, so you don't have to worry about sneaky users tampering with the browser and form's source code to bypass validation. The script consists of
+                        just one easy to integrate and flexible PHP class, also named LivelyValidator, located in <b>Lively-Validator/LivelyValidator.php</b>. </p>
+
+                        <p>The class gets any posted data (from the <code>$_POST</code> and <code>$_FILE</code> arrays) and tests it against the validation rules you give it. An instance of this class will basically contain the results of the validation, grouped into 5 public objects as shown below. If any validation errors are found, the <code>$invalid</code> property will contain all the details of which form fields failed, and the rules involved. A complete, well commented example showing how to integrate this with the rest of your server-side form processing code can be found <a href="#page3-3">here</a>.</p>
+
+                        <pre data-lang="php">
+                        &lt;?php
+                        
+                        // contains all invalid data items, sorted by item keys then tested 
+                        // rules: array( 'itemKey'=>array( 'ruleName 1', 'ruleName 2' .. ))
+                        public $invalid = array();
+                        
+                        // contains all valid data items, sorted by item keys then tested 
+                        // rules:array( 'itemKey'=>array( 'ruleName 1', 'ruleName 2' .. ))
+                        public $valid = array();
+                        
+                        // contains all empty/unset data items that were not required, 
+                        // sorted by item keys: array( 'itemKey'=>'ruleName')
+                        public $empty = array();
+                        
+                        // The data to be validated, as key-value pairs
+                        public $data = array();
+
+                        // The rules to validate the data against, as key-value pairs.
+                        public $rules = array(); 
+                        </pre>
+                    </article>
+                    
+                    <article id='page3' class="level-1 sm-hide md-show">
+                        <h1>Examples</h1>
+                        <p>This section features fully documented, complete working examples of using Lively Validator. Each example includes the CSS, JavaScript and HTML code. 
+                        Feel free to study, copy and adapt all the example's source code, and use when making your own forms.</p>
+                    </article>
+                    
+                    <article id='page3-1' class="level-2 sm-hide md-show">
+                        <h1>Example 1</h1>
+                        <p>This example shows a form using Lively Validator for both client-side, and server side validation. All source files are available in the download package's
+                        "/Lively-Validator" and "/examples" folders.</p>
+                        <section class='tabs example'>
+                            <ul>
+                                <li data-tabid='php' >PHP</li>
+                                <li data-tabid='javascript' >JavaScript</li>
+                                <li data-tabid='css' >CSS</li>
+                            </ul>
+                            <div class='content-box' >
+                            <p class='guide tab-content'>Click any one of the tabs above to view the widget's source-code</p>
+                                <pre class='tab-content' data-lang='php' data-tab='php'>
+                                &lt;?php
+                                
+                                // Will be set to true once the form is posted with valid data
+                                $formProcessed = false; 
+                                
+                                /* Instructions to be shown at the top of the form. Different messages will be set for when the form is 
+                                first sent, and when its resent because it contains invalid data */
+                                $formMsg = ''; 
+
+                                // All the validation rules are set here. Each item in the $rules array targets a form input field with the same name.
+                                $rules = array(
+                                   'name'=&gt; 'required; alphanumeric',
+                                   'email'=&gt;'required; email',
+                                   'phone'=&gt;'tel',
+                                   'age'=&gt;  'required; number; minNumber::18',
+                                   'tc'=&gt;   'required'
+                                   );
+                                   
+                                // Error messages. Each item in the $rules array targets a form input field with the same name.
+                                $errorMessages = array(
+                                   'name'=&gt; 'Name: Please provide a valid name.',
+                                   'email'=&gt;'Email: Please provide a valid email address.',
+                                   'phone'=&gt;'Phone: Please provide a valid telephone/mobile number.',
+                                   'age'=&gt;  'Age: Please declare your age. You must be 18 and over to register.',
+                                   'tc'=&gt;   'Terms &amp; Conditions: You must agree to our Terms of Service to register.'
+                                   );
+
+                                if( $_SERVER['REQUEST_METHOD'] === 'POST' ){ 
+                                //the form has been posted, validate and process its contents
+                                require('../Lively-Validator/LivelyValidator.php'); //load the Lively Validator file
+
+                                   $validator = new LivelyValidator($rules); // Create a validation object, which validates all data and saves the results
+                                    
+                                   if( count($validator-&gt;invalid) &gt; 0 ){ 
+                                   // If the $validator's invalid property has one or more items, then some of the data submitted is invalid. 
+                                   // Further form proccessing is stopped, and we now generate an error message based on errors that were reported.
+                                      
+                                      $errors = array_keys($validator-&gt;invalid);
+                                      $formMsg .= 'The following errors were found while processing your form. Please correct them before resubmitting the form.';
+                                      $formMsg .= '&lt;ul class=&quot;error&quot;&gt;';
+                                      foreach( $errors as $name ){
+                                         $formMsg .= '&lt;li&gt;'.$errorMessages[$name].'&lt;/li&gt;';
+                                         $_POST[$name] = '';
+                                      }
+                                      $formMsg .= '&lt;/ul&gt;';   
+                                   
+                                      $formProcessed = false;
+                                   } else{
+                                   // If the $validator's invalid property is empty, then all submitted data is valid. Continue processing the form.
+                                      $formProcessed = true;
+                                      
+                                      // The rest of your forms processing code goes here ...      
+                                   }   
+                                   
+                                }else {
+                                   $formMsg = '&lt;p&gt;Please complete &amp; send this form to join us today!!&lt;/p&gt;';   
+                                }
+
+                                ?&gt;
+                                &lt;html lang=&quot;en&quot;&gt;
+                                &lt;head&gt;
+                                   &lt;meta charset=&quot;utf-8&quot; /&gt;
+                                   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;
+                                   &lt;title&gt;Lively Validator :: Example 1&lt;/title&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../css/normalize.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../Lively-Validator/lively-validator.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;examples.css&quot; /&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/livelyValidator.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;main.js&quot;&gt;&lt;/script&gt;
+                                &lt;/head&gt;
+                                &lt;body&gt;
+                                &lt;?php 
+                                   if( !$formProcessed ){
+                                      $name = (isset($_POST['name']))? $_POST['name'] : '';
+                                      $email = (isset($_POST['email']))? $_POST['email'] : '';
+                                      $phone = (isset($_POST['phone']))? $_POST['phone'] : '';
+                                      $age = (isset($_POST['age']))? $_POST['age'] : '';
+                                      $tc = (isset($_POST['tc']))? $_POST['tc'] : '';
+                                ?&gt;
+                                   &lt;form method=&quot;post&quot; id=&quot;example1&quot;&gt;
+                                      &lt;fieldset&gt;
+                                         &lt;legend&gt;Registration Form&lt;/legend&gt;
+                                         &lt;p class='guide'&gt;&lt;?php echo $formMsg; ?&gt;&lt;/p&gt;
+                                         &lt;p&gt;&lt;b&gt;Name:&lt;/b&gt; 
+                                            &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;&lt;?php echo $name; ?&gt;&quot; 
+                                            data-validate=&quot;&lt;?php echo $rules['name']; ?&gt;&quot; /&gt;&lt;i /&gt;
+                                         &lt;/p&gt;
+                                         &lt;p&gt;&lt;b&gt;Email:&lt;/b&gt; 
+                                            &lt;input type=&quot;text&quot; name=&quot;email&quot; value=&quot;&lt;?php echo $email; ?&gt;&quot; 
+                                            data-validate=&quot;&lt;?php echo $rules['email']; ?&gt;&quot; /&gt;
+                                         &lt;/p&gt;
+                                         &lt;p&gt;&lt;b&gt;Phone:&lt;/b&gt; 
+                                            &lt;input type=&quot;text&quot; name=&quot;phone&quot; value=&quot;&lt;?php echo $phone; ?&gt;&quot; 
+                                            data-validate=&quot;&lt;?php echo $rules['phone']; ?&gt;&quot; /&gt;
+                                         &lt;/p&gt;
+                                         &lt;p&gt;&lt;b&gt;Age:&lt;/b&gt; 
+                                            &lt;input type=&quot;text&quot; name=&quot;age&quot;  value=&quot;&lt;?php echo $age; ?&gt;&quot; 
+                                            data-validate=&quot;&lt;?php echo $rules['age']; ?&gt;&quot; /&gt;
+                                         &lt;/p&gt;
+                                         &lt;p&gt;&lt;b&gt;Terms &amp; Conditions:&lt;/b&gt; 
+                                            &lt;input type=&quot;checkbox&quot; value=&quot;accept&quot; name=&quot;tc&quot;  
+                                            value=&quot;&lt;?php echo $tc; ?&gt;&quot; data-validate=&quot;&lt;?php echo $rules['tc']; ?&gt;&quot; 
+                                            data-alert=&quot;&lt;?php echo $errorMessages['tc']; ?&gt;&quot; 
+                                         /&gt;
+                                         &lt;/p&gt;
+                                         &lt;p&gt;&lt;input type=&quot;submit&quot; name=&quot;send&quot; value=&quot;Send&quot; /&gt;&lt;/p&gt;
+                                      &lt;/fieldset&gt;
+                                   &lt;/form&gt;
+                                &lt;?php
+                                   }else {
+                                ?&gt;
+                                   &lt;p&gt;Congratulatons! You have been sucessfully registered!&lt;/p&gt;
+                                &lt;?php
+                                   }
+                                ?&gt;
+                                &lt;/body&gt;
+                                &lt;/html&gt;
+                                </pre>
+
+                                <pre class='tab-content' data-lang='javascript' data-tab='javascript'>
+                                $(document).ready( function(){
+                                  $('#example1').livelyValidator({debug:true});
+                                  $(':input').css( 'autocomplete', 'off' );   
+                                });
+                                </pre>
+
+                                <pre class='tab-content' data-lang='css' data-tab='css'>
+                                /* The main tooltip class */
+                                .lv-tooltip{
+                                   color: #000;
+                                   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+                                   border: 3px solid #555;
+                                   background: #f7f7f7;
+                                   position: absolute;
+                                   padding: 5px;
+                                   margin: 0;
+                                   padding: 0;
+                                   width: 210px;
+                                   min-height: 24px;
+                                   font-size: 12px;
+                                   z-index: 100;
+                                   display: none;
+                                   
+                                   -webkit-border-radius: 5px;
+                                   -moz-border-radius: 5px;
+                                   border-radius: 5px;
+                                   
+                                   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                }
+
+                                /* tooltip arrow/pointer */
+                                .lv-tooltip:before,
+                                .lv-tooltip:after{
+                                   content: '';
+                                    position: absolute;
+                                    top: -8px;
+                                    left: 101px;   
+                                   width: 0;
+                                   height: 0;
+                                   border-left: 8px solid transparent;
+                                   border-right: 8px solid transparent;
+                                   border-bottom: 8px solid #555;
+                                }
+                                .lv-tooltip:after{
+                                    left: 105px;
+                                    top: -4px;
+                                   border-left: 4px solid transparent;
+                                   border-right: 4px solid transparent;   
+                                   border-bottom: 4px solid #555;    
+
+                                }
+
+                                /* tooltip states/type: guide or alert */
+
+                                .lv-alert{   
+                                   background: #ffdfe0;
+                                }
+                                .lv-alert:after{   
+                                   border-bottom-color:#ffdfe0;
+                                }
+                                .lv-guide{   
+                                   background: #efffef;
+                                }
+                                .lv-guide:after{   
+                                   border-bottom-color:#efffef;
+                                }
+
+                                /* tooltip list items */
+
+                                .lv-tooltip li{
+                                   padding: 3px 3px 3px 0px;
+                                   list-style-type: none;
+                                   text-align: center;
+                                }
+                                .lv-tooltip li.bullets{
+                                   list-style-type: disc;
+                                   margin-left: 18px;
+                                   text-align: left;
+                                }
+
+                                /* Input field validation states: valid and invalid */
+
+                                .lv-valid{
+                                   border: 1px solid #00dd00;
+                                   -webkit-box-shadow: 0px 0px 2px #00dd00;
+                                   -moz-box-shadow: 0px 0px 2px #00dd00;
+                                   -o-box-shadow: 0px 0px 2px #00dd00;
+                                   -ms-box-shadow: 0px 0px 2px #00dd00;
+                                   box-shadow: 0px 0px 2px #00dd00;
+                                }
+                                .lv-invalid{
+                                   border: 1px solid #dd0000 !important;
+                                   -webkit-box-shadow: 0px 0px 2px #ff0000;
+                                   -moz-box-shadow: 0px 0px 2px #ff0000;
+                                   -o-box-shadow: 0px 0px 2px #ff0000;
+                                   -ms-box-shadow: 0px 0px 2px #ff0000;
+                                   box-shadow: 0px 0px 2px #ff0000;
+                                }
+
+                                body{
+                                   font-family:'DroidSansRegular',Tahoma, Geneva, sans-serif;
+                                   font-size:16px;
+                                   color:#111;
+                                   line-height:1.2em; 
+                                }
+                                form{
+                                   margin:20px; 
+                                   max-width:480px; 
+                                }
+                                form fieldset{
+                                   background-position: left bottom;
+                                   -webkit-border-radius: 15px;
+                                   -moz-border-radius: 15px;
+                                   border-radius: 15px;
+                                   border: 3px solid #e0e0e0;
+                                }
+                                legend{
+                                   font-family:'YanoneKaffeesatzRegular',Tahoma, Geneva, sans-serif;
+                                   padding: 5px 15px;
+                                   font-weight: bold;
+                                   text-align:center;
+                                   font-size: 120%;
+                                }
+                                form p {
+                                   text-align: right;
+                                   margin: 15px;
+                                   color:#333;
+
+                                }
+                                form p.guide{
+                                   text-align: left;
+                                }
+                                form p b{
+                                   padding-right: 5px;
+                                   font-style: normal;
+                                   font-weight: normal;
+                                   color:#333;
+                                }
+                                form input[type='radio']{
+                                   margin-left: 15px;
+
+                                }
+                                form input[type='text'],
+                                form input[type='password']{
+                                   height: 1.5em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form select{
+                                   height: 2em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form textarea{
+                                   height: 4em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form hr{
+                                   border: none;
+                                   background-color: #ccc;
+                                   color: #ccc;
+                                   height: 1px;
+                                   text-align: center;
+                                   width: 90%;
+                                   margin: 15px auto;
+                                }
+                                .error{
+                                   color: #cc0000;
+                                }
+
+                                </pre>
+                            </div>
+                        </section>
+                    </article>
+                    
+                    <article id='page3-2' class="level-2 sm-hide md-show">
+                        <h1>Example 2</h1>
+                        <p>This example shows a form using Lively validator for client-side validation. All the validation rules here have been set using the 
+                        <code>data-validate</code> HTML attribute ( see <a href="#page2-2-1-1">Setting Validation Rules</a> ). All source files are available in the download package's
+                        "/Lively-Validator" and "/examples" folders.</p>
+                        <section class='tabs example'>
+                            <h2>Source Code</h2>
+                            <ul>
+                                <li data-tabid='html' >HTML</li>
+                                <li data-tabid='javascript' >JavaScript</li>
+                                <li data-tabid='css' >CSS</li>
+                            </ul>
+                            <div class='content-box' >
+                            <p class='guide tab-content'>Click any one of the tabs above to view the widget's source-code</p>
+                            
+                                <pre class='tab-content' data-lang='htmlmixed' data-tab='html'>
+                                &lt;html lang=&quot;en&quot;&gt;
+                                &lt;head&gt;
+                                   &lt;meta charset=&quot;utf-8&quot; /&gt;
+                                   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;
+                                   &lt;title&gt;Lively Validator :: Example 2&lt;/title&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../css/normalize.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../Lively-Validator/lively-validator.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;examples.css&quot; /&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/livelyValidator.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;main.js&quot;&gt;&lt;/script&gt;
+                                &lt;/head&gt;
+                                &lt;body&gt;
+                                   
+                                &lt;form id=&quot;example2&quot; method=&quot;post&quot; &gt;
+                                   &lt;fieldset&gt;
+                                      &lt;legend&gt;Registration Form&lt;/legend&gt;
+                                      &lt;p class='guide'&gt;Please fill up and send this form to join us today!&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Name&lt;/b&gt; &lt;input title=&quot;Name&quot; type=&quot;text&quot; name=&quot;name&quot; data-validate=&quot;required; alphanumeric&quot; /&gt;&lt;i /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Email&lt;/b&gt; &lt;input title=&quot;Email&quot; type=&quot;text&quot; name=&quot;email&quot; data-validate=&quot;email; required&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Phone&lt;/b&gt; &lt;input type=&quot;text&quot; name=&quot;phone&quot; data-validate=&quot;tel&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Password&lt;/b&gt; &lt;input type=&quot;password&quot; name=&quot;pass&quot; id=&quot;pass&quot; data-validate=&quot;required; minChars::8; maxChars::12;&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Confirm Password&lt;/b&gt; &lt;input type=&quot;password&quot; name=&quot;confirmPass&quot; data-validate=&quot;required; confirm::pass&quot; /&gt;&lt;/p&gt;
+                                      &lt;hr /&gt;
+                                      &lt;p&gt;&lt;b&gt;Profile Picture:&lt;/b&gt; &lt;input type=&quot;file&quot; name=&quot;picture&quot; data-validate=&quot;image; min::20; max::200;&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Birthday:&lt;/b&gt;&lt;input type=&quot;text&quot; name=&quot;birthday&quot; data-validate=&quot;date&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Profile:&lt;/b&gt; &lt;textarea name=&quot;message&quot; data-validate=&quot;minChars::15; maxChars::50&quot; &gt;&lt;/textarea&gt;&lt;/p&gt;
+                                      &lt;hr /&gt;
+                                      &lt;p&gt;&lt;b&gt;Subscription:&lt;/b&gt;
+                                         &lt;select name=&quot;subscription&quot; id=&quot;subscription&quot; data-validate=&quot;required&quot; &gt;
+                                            &lt;option value=&quot;&quot;&gt;Select One&lt;/option&gt;
+                                            &lt;option value=&quot;1&quot;&gt;1 Month - $50.00&lt;/option&gt;
+                                            &lt;option value=&quot;3&quot;&gt;3 Months - $60.00&lt;/option&gt;
+                                            &lt;option value=&quot;6&quot;&gt;6 Mothns - $100.00&lt;/option&gt;
+                                         &lt;/select&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Credit Card Type:&lt;/b&gt;
+                                         &lt;input type=&quot;radio&quot; name=&quot;ccType&quot; value=&quot;mastercard&quot; data-validate=&quot;requiredSet&quot; /&gt; Mastercard
+                                         &lt;input type=&quot;radio&quot; name=&quot;ccType&quot; value=&quot;visa&quot;   /&gt; Visa
+                                         &lt;input type=&quot;radio&quot; name=&quot;ccType&quot; value=&quot;jcb&quot;   /&gt; JCB
+                                      
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Credit Card Number:&lt;/b&gt;&lt;input type=&quot;text&quot; name=&quot;ccNumber&quot; data-validate=&quot;creditCard; required&quot; /&gt;&lt;/p&gt;
+                                      
+                                      &lt;hr /&gt;
+                                      &lt;p&gt;&lt;b&gt;Terms &amp; Conditions:&lt;/b&gt; 
+                                         &lt;input type=&quot;checkbox&quot; value=&quot;accept&quot; name=&quot;tc&quot; data-validate=&quot;required&quot; data-guide=&quot;You must agree to our Terms of Service to register.&quot; data-alert=&quot;You must agree to our Terms of Service to register.&quot; /&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;input type=&quot;submit&quot; name=&quot;send&quot; value=&quot;Send&quot; /&gt;&lt;/p&gt;
+                                   &lt;/fieldset&gt;
+                                &lt;/form&gt;
+                                &lt;/body&gt;
+                                &lt;/html&gt;
+                                </pre>
+
+                                <pre class='tab-content' data-lang='javascript' data-tab='javascript'>
+                                $(document).ready( function(){
+                                    $('#example2').livelyValidator({debug:true});
+                                    $(':input').css( 'autocomplete', 'off' );   
+                                });
+                                </pre>
+
+                                <pre class='tab-content' data-lang='css' data-tab='css'>
+                                /* The main tooltip class */
+                                .lv-tooltip{
+                                   color: #000;
+                                   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+                                   border: 3px solid #555;
+                                   background: #f7f7f7;
+                                   position: absolute;
+                                   padding: 5px;
+                                   margin: 0;
+                                   padding: 0;
+                                   width: 210px;
+                                   min-height: 24px;
+                                   font-size: 12px;
+                                   z-index: 100;
+                                    display: none;
+                                   
+                                   -webkit-border-radius: 5px;
+                                   -moz-border-radius: 5px;
+                                   border-radius: 5px;
+                                   
+                                   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                }
+
+                                /* tooltip arrow/pointer */
+                                .lv-tooltip:before,
+                                .lv-tooltip:after{
+                                   content: '';
+                                    position: absolute;
+                                    top: -8px;
+                                    left: 101px;   
+                                   width: 0;
+                                   height: 0;
+                                   border-left: 8px solid transparent;
+                                   border-right: 8px solid transparent;
+                                   border-bottom: 8px solid #555;
+                                }
+                                .lv-tooltip:after{
+                                    left: 105px;
+                                    top: -4px;
+                                   border-left: 4px solid transparent;
+                                   border-right: 4px solid transparent;   
+                                   border-bottom: 4px solid #555;    
+
+                                }
+
+                                /* tooltip states/type: guide or alert */
+
+                                .lv-alert{   
+                                   background: #ffdfe0;
+                                }
+                                .lv-alert:after{   
+                                   border-bottom-color:#ffdfe0;
+                                }
+                                .lv-guide{   
+                                   background: #efffef;
+                                }
+                                .lv-guide:after{   
+                                   border-bottom-color:#efffef;
+                                }
+
+                                /* tooltip list items */
+
+                                .lv-tooltip li{
+                                   padding: 3px 3px 3px 0px;
+                                   list-style-type: none;
+                                   text-align: center;
+                                }
+                                .lv-tooltip li.bullets{
+                                   list-style-type: disc;
+                                   margin-left: 18px;
+                                   text-align: left;
+                                }
+
+                                /* Input field validation states: valid and invalid */
+
+                                .lv-valid{
+                                   border: 1px solid #00dd00;
+                                   -webkit-box-shadow: 0px 0px 2px #00dd00;
+                                   -moz-box-shadow: 0px 0px 2px #00dd00;
+                                   -o-box-shadow: 0px 0px 2px #00dd00;
+                                   -ms-box-shadow: 0px 0px 2px #00dd00;
+                                   box-shadow: 0px 0px 2px #00dd00;
+                                }
+                                .lv-invalid{
+                                   border: 1px solid #dd0000 !important;
+                                   -webkit-box-shadow: 0px 0px 2px #ff0000;
+                                   -moz-box-shadow: 0px 0px 2px #ff0000;
+                                   -o-box-shadow: 0px 0px 2px #ff0000;
+                                   -ms-box-shadow: 0px 0px 2px #ff0000;
+                                   box-shadow: 0px 0px 2px #ff0000;
+                                }
+
+                                body{
+                                   font-family:'DroidSansRegular',Tahoma, Geneva, sans-serif;
+                                   font-size:16px;
+                                   color:#111;
+                                   line-height:1.2em; 
+                                }
+                                form{
+                                   margin:20px; 
+                                   max-width:480px; 
+                                }
+                                form fieldset{
+                                   background-position: left bottom;
+                                   -webkit-border-radius: 15px;
+                                   -moz-border-radius: 15px;
+                                   border-radius: 15px;
+                                   border: 3px solid #e0e0e0;
+                                }
+                                legend{
+                                   font-family:'YanoneKaffeesatzRegular',Tahoma, Geneva, sans-serif;
+                                   padding: 5px 15px;
+                                   font-weight: bold;
+                                   text-align:center;
+                                   font-size: 120%;
+                                }
+                                form p {
+                                   text-align: right;
+                                   margin: 15px;
+                                   color:#333;
+
+                                }
+                                form p.guide{
+                                   text-align: left;
+                                }
+                                form p b{
+                                   padding-right: 5px;
+                                   font-style: normal;
+                                   font-weight: normal;
+                                   color:#333;
+                                }
+                                form input[type='radio']{
+                                   margin-left: 15px;
+
+                                }
+                                form input[type='text'],
+                                form input[type='password']{
+                                   height: 1.5em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form select{
+                                   height: 2em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form textarea{
+                                   height: 4em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form hr{
+                                   border: none;
+                                   background-color: #ccc;
+                                   color: #ccc;
+                                   height: 1px;
+                                   text-align: center;
+                                   width: 90%;
+                                   margin: 15px auto;
+                                }
+                                .error{
+                                   color: #cc0000;
+                                }
+                                </pre>
+                            
+                            </div>
+                        </section>
+                    </article>
+                    
+                    <article id='page3-3' class="level-2 sm-hide md-show">
+                        <h1>Example 3</h1>
+                        <p>This example shows a form using Lively validator for client-side validation. All the validation rules here have been set using only standard HTML5 new
+                            input types and attributes ( see <a href="#page2-2-1-1">Setting Validation Rules</a> ). All source files are available in the download package's
+                        "/Lively-Validator" and "/examples" folders.</p>
+                        <section class='tabs example'>
+                            <ul>
+                                <li data-tabid='html' >HTML</li>
+                                <li data-tabid='javascript' >JavaScript</li>
+                                <li data-tabid='css' >CSS</li>
+                            </ul>
+                            <div class='content-box' >
+                            <p class='guide tab-content'>Click any one of the tabs above to view the widget's source-code</p>
+                            
+                                <pre class='tab-content' data-lang='htmlmixed' data-tab='html'>
+                                &lt;html lang=&quot;en&quot;&gt;
+                                &lt;head&gt;
+                                   &lt;meta charset=&quot;utf-8&quot; /&gt;
+                                   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;
+                                   &lt;title&gt;Lively Validator :: Example 3&lt;/title&gt;
+                                   &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../css/normalize.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;examples.css&quot; /&gt;
+                                   &lt;link rel=&quot;cssheet&quot; href=&quot;../Lively-Validator/lively-validator.css&quot; /&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/jquery-1.12.0_min.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;../Lively-Validator/livelyValidator.js&quot;&gt;&lt;/script&gt;
+                                   &lt;script type=&quot;text/javascript&quot; src=&quot;main.js&quot;&gt;&lt;/script&gt;
+                                   &lt;/head&gt;
+                                &lt;body&gt;                                   
+                                &lt;form id=&quot;example3&quot; method=&quot;post&quot;&gt;
+                                   &lt;fieldset&gt;
+                                      &lt;legend&gt;Registration Form&lt;/legend&gt;
+                                      &lt;p class='guide'&gt;Please fill up and send this form to join us today!&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Name:&lt;/b&gt; 
+                                        &lt;input title=&quot;Name&quot; type=&quot;text&quot; name=&quot;name&quot; pattern=&quot;^[a-zA-Z0-9]+$&quot; /&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Email:&lt;/b&gt; 
+                                        &lt;input title=&quot;Email&quot; type=&quot;email&quot; name=&quot;email&quot;  /&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Phone:&lt;/b&gt; 
+                                        &lt;input type=&quot;tel&quot; name=&quot;phone&quot; required=&quot;required&quot; /&gt;
+                                      &lt;/p&gt;
+                                      &lt;hr /&gt;
+                                      &lt;p&gt;&lt;b&gt;Age:&lt;/b&gt; &lt;input type=&quot;number&quot; name=&quot;age&quot; min=&quot;18&quot; /&gt;&lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Birthday:&lt;/b&gt;
+                                        &lt;input type=&quot;date&quot; name=&quot;birthday&quot; id=&quot;birthday&quot; min=&quot;1970-01-01&quot; max=&quot;1994-01-01&quot; /&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;b&gt;Profile:&lt;/b&gt; 
+                                        &lt;textarea name=&quot;message&quot; id=&quot;message&quot; required=&quot;required&quot; &gt;&lt;/textarea&gt;
+                                      &lt;/p&gt;                                      
+                                      &lt;hr /&gt;
+                                      &lt;p&gt;&lt;b&gt;Terms &amp; Conditions:&lt;/b&gt; 
+                                         &lt;input type=&quot;checkbox&quot; value=&quot;accept&quot; name=&quot;tc&quot; id=&quot;tc&quot; required=&quot;required&quot;  /&gt;
+                                      &lt;/p&gt;
+                                      &lt;p&gt;&lt;input type=&quot;submit&quot; name=&quot;send&quot; id=&quot;submit&quot; value=&quot;Send&quot; /&gt;&lt;/p&gt;
+                                   &lt;/fieldset&gt;
+                                &lt;/form&gt;
+                                &lt;/body&gt;
+                                &lt;/html&gt;
+                                </pre>
+
+                                <pre class='tab-content' data-lang='javascript' data-tab='javascript'>
+                                $(document).ready( function(){
+                                  $('#example3').livelyValidator({debug:true});
+                                  $(':input').css( 'autocomplete', 'off' );   
+                                });
+                                </pre>
+
+                                <pre class='tab-content' data-lang='css' data-tab='css'>
+                                /* The main tooltip class */
+                                .lv-tooltip{
+                                   color: #000;
+                                   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+                                   border: 3px solid #555;
+                                   background: #f7f7f7;
+                                   position: absolute;
+                                   padding: 5px;
+                                   margin: 0;
+                                   padding: 0;
+                                   width: 210px;
+                                   min-height: 24px;
+                                   font-size: 12px;
+                                   z-index: 100;
+                                    display: none;
+                                   
+                                   -webkit-border-radius: 5px;
+                                   -moz-border-radius: 5px;
+                                   border-radius: 5px;
+                                   
+                                   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                                }
+
+                                /* tooltip arrow/pointer */
+                                .lv-tooltip:before,
+                                .lv-tooltip:after{
+                                   content: '';
+                                    position: absolute;
+                                    top: -8px;
+                                    left: 101px;   
+                                   width: 0;
+                                   height: 0;
+                                   border-left: 8px solid transparent;
+                                   border-right: 8px solid transparent;
+                                   border-bottom: 8px solid #555;
+                                }
+                                .lv-tooltip:after{
+                                    left: 105px;
+                                    top: -4px;
+                                   border-left: 4px solid transparent;
+                                   border-right: 4px solid transparent;   
+                                   border-bottom: 4px solid #555;    
+
+                                }
+
+                                /* tooltip states/type: guide or alert */
+
+                                .lv-alert{   
+                                   background: #ffdfe0;
+                                }
+                                .lv-alert:after{   
+                                   border-bottom-color:#ffdfe0;
+                                }
+                                .lv-guide{   
+                                   background: #efffef;
+                                }
+                                .lv-guide:after{   
+                                   border-bottom-color:#efffef;
+                                }
+
+                                /* tooltip list items */
+
+                                .lv-tooltip li{
+                                   padding: 3px 3px 3px 0px;
+                                   list-style-type: none;
+                                   text-align: center;
+                                }
+                                .lv-tooltip li.bullets{
+                                   list-style-type: disc;
+                                   margin-left: 18px;
+                                   text-align: left;
+                                }
+
+                                /* Input field validation states: valid and invalid */
+
+                                .lv-valid{
+                                   border: 1px solid #00dd00;
+                                   -webkit-box-shadow: 0px 0px 2px #00dd00;
+                                   -moz-box-shadow: 0px 0px 2px #00dd00;
+                                   -o-box-shadow: 0px 0px 2px #00dd00;
+                                   -ms-box-shadow: 0px 0px 2px #00dd00;
+                                   box-shadow: 0px 0px 2px #00dd00;
+                                }
+                                .lv-invalid{
+                                   border: 1px solid #dd0000 !important;
+                                   -webkit-box-shadow: 0px 0px 2px #ff0000;
+                                   -moz-box-shadow: 0px 0px 2px #ff0000;
+                                   -o-box-shadow: 0px 0px 2px #ff0000;
+                                   -ms-box-shadow: 0px 0px 2px #ff0000;
+                                   box-shadow: 0px 0px 2px #ff0000;
+                                }
+
+                                body{
+                                   font-family:'DroidSansRegular',Tahoma, Geneva, sans-serif;
+                                   font-size:16px;
+                                   color:#111;
+                                   line-height:1.2em; 
+                                }
+                                form{
+                                   margin:20px; 
+                                   max-width:480px; 
+                                }
+                                form fieldset{
+                                   background-position: left bottom;
+                                   -webkit-border-radius: 15px;
+                                   -moz-border-radius: 15px;
+                                   border-radius: 15px;
+                                   border: 3px solid #e0e0e0;
+                                }
+                                legend{
+                                   font-family:'YanoneKaffeesatzRegular',Tahoma, Geneva, sans-serif;
+                                   padding: 5px 15px;
+                                   font-weight: bold;
+                                   text-align:center;
+                                   font-size: 120%;
+                                }
+                                form p {
+                                   text-align: right;
+                                   margin: 15px;
+                                   color:#333;
+
+                                }
+                                form p.guide{
+                                   text-align: left;
+                                }
+                                form p b{
+                                   padding-right: 5px;
+                                   font-style: normal;
+                                   font-weight: normal;
+                                   color:#333;
+                                }
+                                form input[type='radio']{
+                                   margin-left: 15px;
+
+                                }
+                                form input[type='text'],
+                                form input[type='password']{
+                                   height: 1.5em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form select{
+                                   height: 2em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form textarea{
+                                   height: 4em;
+                                   border: 2px solid #ccc;
+                                   width: 245px;
+                                   padding:3px;
+                                }
+                                form hr{
+                                   border: none;
+                                   background-color: #ccc;
+                                   color: #ccc;
+                                   height: 1px;
+                                   text-align: center;
+                                   width: 90%;
+                                   margin: 15px auto;
+                                }
+                                .error{
+                                   color: #cc0000;
+                                }
+
+                                </pre>
+                            </div>
+                        </section>
+                    </article>
+                    
+                </div>
+            </div>            
+        </div>
+    </main>   
+    <script type="text/javascript" src="js/codemirror-compressed.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.0_min.js"></script>
+	<script type="text/javascript" src="../dist/livelyValidator.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</div>
+</body>
+</html>

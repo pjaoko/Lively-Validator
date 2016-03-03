@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lively Validator</title>
+	<meta name="description" content="Lively Validator Docs" />	
+    <meta name="author" content="Patrick Jaoko">
+	<link rel="stylesheet" href="../docs/css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="../docs/css/layout.css" type="text/css" />
+	<link rel="stylesheet" href="../docs/css/typography.css" type="text/css" />
+	<link rel="stylesheet" href="../docs/css/form.css" type="text/css" />
+	<link rel="stylesheet" href="../docs/css/tests.css" type="text/css" />
+	<link rel="stylesheet" href="../docs/css/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="../dist/lively-validator.css" type="text/css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-12"><img id="logo" title="Lively Validator" alt="Lively Validator" src="../docs/images/logo.png" /></h1>
+            </div>
+            <div class="row">
+                <nav class="col-12">
+                    <a href="../docs/index.html">DOCS</a>
+                    <a href="../docs/demo.html">DEMO</a>
+                    <a href="tests.html" class="active">TESTS</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">                
+            <template id="testsuite">
+                <form autofill="false" class="testsuite">
+                    <fieldset>
+                        <legend>Test Suite</legend>
+                        <div class="row">
+                            <h4 class="col-2"></h4>
+                            <h4 class="col-4">Valid Fields</h4>
+                            <h4 class="col-4">Invalid Fields</h4>
+                        </div>
+                    </fieldset>
+                </form>
+            </template>                    
+            <template id="testFiles">
+                <div class="row">
+                    <div class="col-2 testrule"></div>
+                    <div class="col-4"></div>
+                    <div class="col-4"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1 testresult"></div>
+                </div>
+            </template>                      
+            <template id="testSet">
+                <div class="row">
+                    <div class="col-2 testrule"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1 testresult"></div>
+                </div>
+            </template>                        
+            <template id="testInput">
+                <div class="row">
+                    <div class="col-2 testrule"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1 testresult"></div>
+                </div>
+            </template>              
+        </div>
+    </main> 
+	<script type="text/javascript" src="../docs/js/jquery-1.12.0_min.js"></script>
+	<script type="text/javascript" src="../dist/livelyValidator.js"></script>
+	<script type="text/javascript" src="tests.js"></script>
+</div>
+</body>
+</html>

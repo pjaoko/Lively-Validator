@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'ChunkFiveRoman';
+    src: url('../fonts/chunkfive-roman-webfont.eot');
+    src: url('../fonts/chunkfive-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/chunkfive-roman-webfont.woff') format('woff'),
+         url('../fonts/chunkfive-roman-webfont.ttf') format('truetype'),
+         url('../fonts/chunkfive-roman-webfont.svg#ChunkFiveRoman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ralewayextrabold';
+    src: url('../fonts/raleway-bold-webfont.eot');
+    src: url('../fonts/raleway-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-bold-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-bold-webfont.woff') format('woff'),
+         url('../fonts/raleway-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ralewayregular';
+    src: url('../fonts/raleway-regular-webfont.eot');
+    src: url('../fonts/raleway-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-regular-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-regular-webfont.woff') format('woff'),
+         url('../fonts/raleway-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ralewaythin';
+    src: url('../fonts/raleway-light-webfont.eot');
+    src: url('../fonts/raleway-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-light-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-light-webfont.woff') format('woff'),
+         url('../fonts/raleway-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  
+}
+body {
+  font-size: 1.6em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+  
+}
+h1, 
+h2, 
+h3{
+    margin-top: 2rem;
+    margin-bottom: 0;
+    
+}
+h4, 
+h5, 
+h6{
+    margin-top: 1rem;
+    margin-bottom: 0;
+    
+}a{
+    text-decoration: none;
+    
+}
+.container .container{
+    font-size: 1.5rem;
+}
+header h1{
+    font-family: "ChunkFiveRoman", "Impact", Arial, sans-serif;
+    font-size: 3.6rem;
+}
+nav a{
+    font-family: "ralewaythin", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+header nav a{
+    font-family: "ralewaythin", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000; 
+    font-weight: bold;
+}
+header nav a.active,
+header nav a:hover{
+    text-shadow: 1px 0px 1px green;
+    padding-bottom: 2px;
+    border-bottom: 1px solid green;
+}
+main nav ul{
+    font-size: 98%;
+    color: #333; 
+    
+}
+main nav li{
+    font-size: 98%; 
+    
+}
+main nav a.active{
+    font-weight: bold;
+    
+}
+pre{
+    font-size: 12px;
+    font-family: monospace;
+    background-color: #f7f7f7;
+    
+} 
+code{
+    font-weight: bold;
+    color: #222;
+    font-family: serif;
+    font-size: 106%;
+    
+}
+article h1{
+    font-family: "ralewayextrabold", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-top: 1em;
+    
+}
+
+ul{
+    list-style: circle inside; 
+    padding-left: 0;
+    
+}
+ol{
+    list-style: decimal inside; 
+    padding-left: 0;
+    
+}
+.specs{
+	font-size:90%;
+	color:#333;
+    margin: 0;
+    
+}

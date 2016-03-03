@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+   <title>Lively Validator :: Example 3</title>
+   <meta name="description" content="" />
+   <link rel="stylesheet" href="../help/styles/normalize.css" />
+   <link rel="stylesheet" href="examples.css" />
+   <link rel="stylesheet" href="../Lively-Validator/lively-validator.css" />
+   <script type="text/javascript" src="../Lively-Validator/jquery-1.8.0.min.js"></script>
+   <script type="text/javascript" src="../Lively-Validator/livelyValidator.js"></script>
+   <script type="text/javascript" >
+   $(document).ready( function(){
+      $('#example3').livelyValidator({debug:true});
+      $(':input').css( 'autocomplete', 'off' );   
+   });
+   </script>
+</head>
+<body>
+   
+<form id="example3" method="post">
+   <fieldset>
+      <legend>Registration Form</legend>
+      <p class='guide'>Please fill up and send this form to join us today!</p>
+      <p><b>Name:</b> <input title="Name" type="text" name="name" pattern="^[a-zA-Z0-9]+$" /></p>
+      <p><b>Email:</b> <input title="Email" type="email" name="email"  /></p>
+      <p><b>Phone:</b> <input type="tel" name="phone" required="required" /></p>
+      <hr />
+      <p><b>Age:</b> <input type="number" name="age" min="18" /></p>
+      <p><b>Birthday:</b><input type="date" name="birthday" id="birthday" min="1970-01-01" max="1994-01-01" /></p>
+      <p><b>Profile:</b> <textarea name="message" id="message" required="required" ></textarea></p>
+      
+      <hr />
+      <p><b>Terms & Conditions:</b> 
+         <input type="checkbox" value="accept" name="tc" id="tc" required="required"  />
+      </p>
+      <p><input type="submit" name="send" id="submit" value="Send" /></p>
+   </fieldset>
+</form>
+
+</body>
+</html>
